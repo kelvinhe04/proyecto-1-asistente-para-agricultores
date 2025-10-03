@@ -1,0 +1,17 @@
+# Requirements para Asistente Agrícola
+# Instalar con: pip install -r requirements.txt
+
+# Variables de entorno
+python-dotenv==1.0.0
+
+# Peticiones HTTP para API
+requests==2.31.0
+
+# Análisis de datos
+pandas==2.2.0
+numpy==1.26.3
+
+# Visualizaciones
+matplotlib==3.8.2
+seaborn==0.13.1
+plotly==5.18.0
