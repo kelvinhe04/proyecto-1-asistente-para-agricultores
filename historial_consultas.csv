@@ -1,0 +1,3 @@
+fecha_hora,ciudad,cultivo,temperatura,humedad,puntaje,nivel,tipo_consulta
+2025-10-03 10:25:56,Panama City,,29.88,73,0,,consulta_clima
+2025-10-03 10:26:42,Panama City,Tomate,29.88,73,100,EXCELENTE,recomendaciones_cultivos
