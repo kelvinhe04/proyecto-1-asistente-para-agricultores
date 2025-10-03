@@ -1,0 +1,9 @@
+cultivo,nombre,duracion_dias,temp_minima,temp_optima,temp_maxima,precipitacion_min,precipitacion_optima,precipitacion_max,humedad_optima,tolerancia_sequia,tolerancia_lluvia,temporada_siembra,descripcion
+maiz,Maíz,90,18,25,32,400,600,800,60,media,baja,"abril,mayo,junio",Cultivo básico para alimentación y economía rural
+arroz,Arroz,120,20,28,35,1000,1500,2000,80,baja,alta,"mayo,junio,julio",Requiere abundante agua ideal para zonas húmedas
+tomate,Tomate,75,15,24,30,300,500,700,65,media,baja,"marzo,abril,septiembre,octubre",Sensible al exceso de humedad prefiere estación seca
+yuca,Yuca,240,20,27,35,600,1000,1500,65,alta,media,"abril,mayo,junio,julio",Cultivo resistente se adapta a diversas condiciones
+frijol,Frijol,70,18,23,28,300,450,600,60,media,baja,"mayo,junio,agosto",Ciclo corto sensible al exceso de agua
+platano,Plátano,300,18,27,35,1200,2000,3000,75,baja,alta,"todo el año",Requiere humedad constante importante en Panamá
+cebolla,Cebolla,100,13,20,25,350,500,650,60,media,baja,"enero,febrero,septiembre,octubre",Prefiere temperaturas frescas y baja humedad
+sandia,Sandía,90,18,26,32,400,550,700,65,media,baja,"enero,febrero,marzo",Necesita clima cálido y seco durante la maduración

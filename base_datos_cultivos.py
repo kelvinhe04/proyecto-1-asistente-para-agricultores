@@ -2,9 +2,63 @@
 """
 Base de datos de cultivos comunes en Panamá
 Información basada en condiciones agroclimáticas de Panamá
+Datos cargados desde archivo CSV
 """
 
-cultivos_panama = {
+import pandas as pd
+import os
+
+# Cargar datos desde CSV
+def cargar_cultivos_desde_csv():
+    """
+    Carga los datos de cultivos desde el archivo CSV
+    """
+    try:
+        # Obtener la ruta del archivo CSV
+        directorio_actual = os.path.dirname(__file__)
+        ruta_csv = os.path.join(directorio_actual, 'cultivos_panama.csv')
+        
+        # Leer el CSV
+        df_cultivos = pd.read_csv(ruta_csv)
+        
+        # Convertir a diccionario con la misma estructura original
+        cultivos_dict = {}
+        
+        for _, row in df_cultivos.iterrows():
+            # Procesar temporada de siembra (convertir string a lista)
+            temporadas = row['temporada_siembra'].split(',')
+            temporadas = [temp.strip() for temp in temporadas]
+            
+            cultivos_dict[row['cultivo']] = {
+                'nombre': row['nombre'],
+                'duracion_dias': int(row['duracion_dias']),
+                'temporada_siembra': temporadas,
+                'temp_minima': float(row['temp_minima']),
+                'temp_optima': float(row['temp_optima']),
+                'temp_maxima': float(row['temp_maxima']),
+                'precipitacion_min': float(row['precipitacion_min']),
+                'precipitacion_optima': float(row['precipitacion_optima']),
+                'precipitacion_max': float(row['precipitacion_max']),
+                'humedad_optima': float(row['humedad_optima']),
+                'tolerancia_sequia': row['tolerancia_sequia'],
+                'tolerancia_lluvia': row['tolerancia_lluvia'],
+                'descripcion': row['descripcion']
+            }
+        
+        return cultivos_dict
+        
+    except FileNotFoundError:
+        print("⚠️  Archivo cultivos_panama.csv no encontrado. Usando datos por defecto.")
+        return cargar_cultivos_por_defecto()
+    except Exception as e:
+        print(f"⚠️  Error al cargar CSV: {e}. Usando datos por defecto.")
+        return cargar_cultivos_por_defecto()
+
+def cargar_cultivos_por_defecto():
+    """
+    Datos por defecto en caso de que falle la carga del CSV
+    """
+    return {
     'maiz': {
         'nombre': 'Maíz',
         'duracion_dias': 90,
@@ -134,6 +188,9 @@ cultivos_panama = {
     }
 }
 
+# Cargar datos de cultivos (desde CSV o por defecto)
+cultivos_panama = cargar_cultivos_desde_csv()
+
 
 def obtener_cultivo(nombre_cultivo):
     """
@@ -169,7 +226,10 @@ def cultivos_por_temporada(mes):
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    print("=== BASE DE DATOS DE CULTIVOS DE PANAMÁ ===\n")
+    print("=== BASE DE DATOS DE CULTIVOS DE PANAMÁ ===")
+    print("📄 Datos cargados desde: cultivos_panama.csv")
+    print(f"📊 Total de cultivos: {len(cultivos_panama)}")
+    print("="*50 + "\n")
     
     # Listar todos los cultivos
     print("Cultivos disponibles:")
